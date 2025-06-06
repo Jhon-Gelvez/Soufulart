@@ -1,0 +1,211 @@
+* {
+    box-sizing: border-box;
+    font-family: Popins, Verdana, Geneva, Tahoma, sans-serif;
+    --text-color: #ddd;
+    --bg-color-dark: #444;
+    --text-selected-color: #fff2;
+    --box-shadow: 0 0 25px #000;
+    --bg-button-dark: #666;
+    --border-radius: 8px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    text-decoration-color: var(--text-selected-color);
+    background-color: #666;
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* sectioin inicio */
+
+.header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 10dvh;
+    justify-content: space-between;
+    padding: 0 8px;
+    backdrop-filter: blur(4px);
+}
+
+.header__button,
+.--menu {
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+.header__img {
+    width: 100%;
+    max-width: 80px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* header ends */
+
+/* menu para moviles */
+
+/* Estilos para el menú lateral */
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 1000;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-lateral--active {
+    left: 0;
+}
+
+.menu-lateral__header {
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu-lateral__close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.menu-lateral__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-lateral__item {
+    border-bottom: 1px solid #eee;
+}
+
+.menu-lateral__link {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.menu-lateral__link span {
+    margin-right: 15px;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-overlay--active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* container */
+
+.content {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* cards */
+
+.card {
+    width: clamp(150px, 60%, 450px);
+    margin: 10px;
+}
+
+.card__img {
+    border-radius: var(--border-radius);
+    width: 100%;
+    height: auto;
+    box-shadow: var(--box-shadow);
+}
+
+/* footer */
+
+.footer {
+    width: 100%;
+    height: 10dvh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    font-size: 48px;
+}
+
+.footer__button {
+    background-color: var(--bg-button-dark);
+    color: var(--text-color);
+    font-size: 48px;
+    border: none;
+    padding: 12px;
+    border-radius: var(--border-radius);
+}
+
+.footer__button .material-symbols-outlined {
+    /* Si Material Symbols es más pequeño, puedes ajustarlo aquí. */
+    /* En este caso, hereda 48px del padre, pero a veces necesita un ajuste fino. */
+    /* Si 48px ya funciona bien para 'home', no necesitas esto. */
+    font-size: inherit; /* Asegura que herede el tamaño del botón */
+    line-height: 1; /* Ayuda a la alineación vertical */
+    display: block; /* Asegura que no haya espacio extra debajo */
+}
+
+.footer__button .fab.fa-whatsapp {
+    /* Font Awesome también heredará el font-size del botón (48px) */
+    /* El "fab" y "fa-whatsapp" son las clases de Font Awesome */
+    font-size: inherit; /* Asegura que herede el tamaño del botón */
+    line-height: 1; /* Ayuda a la alineación vertical */
+    display: block; /* Asegura que no haya espacio extra debajo */
+}
+
+.footer__button:focus,
+.footer__button:hover {
+    outline: none; /* Elimina el borde de enfoque por defecto */
+    /* Si hay otras transiciones o transformaciones al hover/focus, anúlelas aquí */
+    transform: none;
+    transition: none;
+}
+
+/* section bisuteria */
+
+/* section galeria */
+
+.--galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 32px;
+}
+
+.--galeria > img {
+    border-radius: var(--border-radius);
+    width: 100%;
+    height: auto;
+    box-shadow: var(--box-shadow);
+}
