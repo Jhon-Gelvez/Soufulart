@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const backButton = document.querySelector(".header__back-button");
     if (backButton) {
         backButton.addEventListener("click", () => {
-            window.location.href = "inicio.html"; // Redirect to home page
+            window.location.href = "index.html"; // Redirect to home page
         });
     }
 
