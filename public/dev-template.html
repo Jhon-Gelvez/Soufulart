@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Soufulart</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Theme Config -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2bee79",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102217",
+                        "surface-dark": "#1c2e24",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "2xl": "2.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Custom scrollbar hide for horizontal scrolling */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased selection:bg-primary selection:text-black">
+    <div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden pb-24">
+        <!-- TopAppBar -->
+        <header
+            class="sticky top-0 z-50 flex items-center justify-between bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 py-4">
+            <div>
+                <h1 class="text-2xl font-bold leading-tight tracking-tight dark:text-white">Soufulart</h1>
+                <p class="text-base font-medium text-gray-500 dark:text-gray-400">Arte con el alma</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-dark/10 dark:bg-white/10 hover:bg-primary/20 transition-colors">
+                    <span class="material-symbols-outlined text-gray-800 dark:text-white"
+                        style="font-size: 24px;">search</span>
+                </button>
+                <button
+                    class="relative flex h-10 w-10 items-center justify-center rounded-full bg-surface-dark/10 dark:bg-white/10 hover:bg-primary/20 transition-colors">
+                    <span class="material-symbols-outlined text-gray-800 dark:text-white"
+                        style="font-size: 24px;">shopping_bag</span>
+                    <span
+                        class="absolute top-2 right-2 h-2.5 w-2.5 rounded-full bg-primary border-2 border-background-dark"></span>
+                </button>
+            </div>
+        </header>
+        <!-- Chips (Categories) -->
+        <div class="w-full overflow-x-auto scrollbar-hide pt-2 pb-4">
+            <div class="flex gap-3 px-6 w-max">
+                <button
+                    class="flex h-10 items-center justify-center gap-x-2 rounded-full bg-primary px-6 transition-transform active:scale-95">
+                    <p class="text-background-dark text-sm font-bold leading-normal">Todos</p>
+                </button>
+                <button
+                    class="flex h-10 items-center justify-center gap-x-2 rounded-full bg-white border border-gray-200 dark:border-white/10 dark:bg-white/5 px-6 transition-transform active:scale-95">
+                    <span class="material-symbols-outlined text-gray-600 dark:text-gray-300"
+                        style="font-size: 18px;">pets</span>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium leading-normal">Animales</p>
+                </button>
+                <button
+                    class="flex h-10 items-center justify-center gap-x-2 rounded-full bg-white border border-gray-200 dark:border-white/10 dark:bg-white/5 px-6 transition-transform active:scale-95">
+                    <span class="material-symbols-outlined text-gray-600 dark:text-gray-300"
+                        style="font-size: 18px;">face_3</span>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium leading-normal">Muñecas</p>
+                </button>
+                <button
+                    class="flex h-10 items-center justify-center gap-x-2 rounded-full bg-white border border-gray-200 dark:border-white/10 dark:bg-white/5 px-6 transition-transform active:scale-95">
+                    <span class="material-symbols-outlined text-gray-600 dark:text-gray-300"
+                        style="font-size: 18px;">child_care</span>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium leading-normal">Bebés</p>
+                </button>
+                <button
+                    class="flex h-10 items-center justify-center gap-x-2 rounded-full bg-white border border-gray-200 dark:border-white/10 dark:bg-white/5 px-6 transition-transform active:scale-95">
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium leading-normal">Personajes</p>
+                </button>
+            </div>
+        </div>
+        <!-- ImageGrid (Product Gallery) -->
+        <div class="flex-1 px-4">
+            <div class="grid grid-cols-2 gap-4 pb-4">
+                <!-- Product 1 -->
+                <div class="group flex flex-col gap-3">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-800">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                            data-alt="Cute crochet beige teddy bear sleeping with a small nightcap"
+                            style='background-image: url("../assets/portada-bisuteria.jpg");'>
+                        </div>
+                        <button
+                            class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-primary hover:text-black transition-colors">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">favorite</span>
+
+                        </button>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-start">
+                            <h3
+                                class="text-base font-semibold leading-tight text-gray-900 dark:text-white line-clamp-1">
+                                Manilla de loro</h3>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <p class="text-lg font-bold text-primary">15.000</p>
+                            <button
+                                class="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-background-dark hover:bg-white transition-colors">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">add</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="group flex flex-col gap-3">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-800">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                            data-alt="Green crochet cactus in a small brown pot with a smiling face"
+                            style='background-image: url("../assets/portada-tejidos.jpg");'>
+                        </div>
+                        <button
+                            class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-primary hover:text-black transition-colors">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">favorite</span>
+                        </button>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-start">
+                            <h3
+                                class="text-base font-semibold leading-tight text-gray-900 dark:text-white line-clamp-1">
+                                Piña</h3>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <p class="text-lg font-bold text-primary">$10.000</p>
+                            <button
+                                class="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-background-dark hover:bg-white transition-colors">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">add</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="group flex flex-col gap-3">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-800">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                            data-alt="Orange crochet fox with a white tipped tail sitting in a forest setting"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCv3ya--5oAyCjkHtC8zhsWFiQJAbdbQlyrccMA8LFSGxD-cm83kV5qfNeEzOb95LZghPJQIDHNvBlOAStVouePf-OMJst_I4BSCIhPilsgWm30t3fGSNcu-vGhtKPs_eNTNEzi3XdQWel9GgPhCEP_2Vt1whtdtPdGzQGqPtDKZ1jr4wP-MT5BKnTyTcNx94ANsNcMzwQuWp5kbxLHLY5ghf-hqPyWZK54VlDgXdsM3TstIRVWxN8PSVAHxlK0Ivl7ZLsfTvu6fRNW");'>
+                        </div>
+                        <button
+                            class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-primary hover:text-black transition-colors">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">favorite</span>
+                        </button>
+                        <div
+                            class="absolute bottom-3 left-3 rounded-full bg-black/40 px-2 py-0.5 text-xs font-medium text-white backdrop-blur-sm">
+                            Solo quedan 2
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-start">
+                            <h3
+                                class="text-base font-semibold leading-tight text-gray-900 dark:text-white line-clamp-1">
+                                Zorrito del Bosque</h3>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <p class="text-lg font-bold text-primary">$30.00</p>
+                            <button
+                                class="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-background-dark hover:bg-white transition-colors">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">add</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="group flex flex-col gap-3">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-800">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                            data-alt="Handmade crochet doll with curly hair and a colorful dress"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCMmb5ro2VyERl_enG7uXfM16qFHJVlaZhcsLGJk75zEkIqiWVZk58tbXlzdyB1fknozdh9nC4_ZnYs9NozymUoeLUdWK3GV752D8yPQ-unyIUPSVdUoIROmmzS4Et1JhFtIpB2IDZ53rUm-1_fBk-NSd1aj37MF_orMwVRq_v9ibW491eZblJc1X1vLgEa8RwoJ_a9T3ocZW0p5Nbo7PmiB-8_AgxXcO4_ww98ZVl4MYW3PK9JXFWgORhaF-4_3NiNDX5pZwGbOhFy");'>
+                        </div>
+                        <button
+                            class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-primary hover:text-black transition-colors">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">favorite</span>
+                        </button>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-start">
+                            <h3
+                                class="text-base font-semibold leading-tight text-gray-900 dark:text-white line-clamp-1">
+                                Muñeca Lola</h3>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <p class="text-lg font-bold text-primary">$45.00</p>
+                            <button
+                                class="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-background-dark hover:bg-white transition-colors">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">add</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 5 -->
+                <div class="group flex flex-col gap-3">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-800">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                            data-alt="Small blue crochet whale toy on a white background"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDyqFXo0kw8J7R9nLPfG5KaqJHRkN0TsRFFkRZWjmVfWDSg4x3UG85G8qrSYMGtWYTaq7Wt7wHWDIaFFqFPqArdBzkJv8z4suZEAcmJGDpcV9RLTB8vPKpF4koKQLa3Csj_pArnpjr2R3-2ZWXc9W4jt-gZcuXd13rAufOa-ZeeXUuApiVvf0ozx7HJeGUNIzJgU6WamMf2UH2glQOVI6-romhDWfmaWsZLPLeN4--WH-efJ2fnVWEeK7YuuA1LbP12Fcg35-OtXbOK");'>
+                        </div>
+                        <button
+                            class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-primary hover:text-black transition-colors">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">favorite</span>
+                        </button>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-start">
+                            <h3
+                                class="text-base font-semibold leading-tight text-gray-900 dark:text-white line-clamp-1">
+                                Ballenita Azul</h3>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <p class="text-lg font-bold text-primary">$18.00</p>
+                            <button
+                                class="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-background-dark hover:bg-white transition-colors">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">add</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 6 -->
+                <div class="group flex flex-col gap-3">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-800">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                            data-alt="Cute crochet penguin with a red scarf"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfzbNiUUxfFOFueEpRidJRswFg-sUR2jpQZs-AhdvQda9ffGP7pBB9D-IwykJ3fCeWbuRRzc8NmIZd76h79afgfBav41MyGSFVxozE1hNQmMCNslZaxq5rlSCRbYy5cxXMZLfwmsh6A7QvS0W2-sgs3WMbTJcPO4w7-OgqBE4HEhDwPbBT7EEBslg6KRYZfqvi-7k3MF2KP1LFp_QAtUL3n-g6hBmayOJsjNvf6PoZBs9lmWYS_lCMhVhB6e72l74nmIh46vnr0O22");'>
+                        </div>
+                        <button
+                            class="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-primary hover:text-black transition-colors">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">favorite</span>
+                        </button>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-start">
+                            <h3
+                                class="text-base font-semibold leading-tight text-gray-900 dark:text-white line-clamp-1">
+                                Pingüino Pepe</h3>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <p class="text-lg font-bold text-primary">$22.00</p>
+                            <button
+                                class="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-background-dark hover:bg-white transition-colors">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">add</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="h-20"></div> <!-- Spacer for floating nav -->
+        </div>
+        <!-- Floating Bottom Navigation -->
+        <div class="fixed bottom-6 left-1/2 w-[calc(100%-32px)] max-w-md -translate-x-1/2 z-50">
+            <div
+                class="flex h-16 w-full items-center justify-between rounded-[2rem] bg-surface-dark/90 dark:bg-white/5 backdrop-blur-xl border border-white/5 px-2 shadow-2xl shadow-black/50">
+                <a class="flex flex-1 flex-col items-center justify-center gap-1" href="#">
+                    <div
+                        class="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-background-dark transition-all">
+                        <span class="material-symbols-outlined"
+                            style="font-size: 24px; font-variation-settings: 'FILL' 1;">home</span>
+                    </div>
+                </a>
+                <a class="flex flex-1 flex-col items-center justify-center gap-1 group" href="#">
+                    <div
+                        class="flex h-10 w-10 items-center justify-center rounded-full text-gray-400 group-hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined" style="font-size: 24px;">grid_view</span>
+                    </div>
+                </a>
+                <a class="flex flex-1 flex-col items-center justify-center gap-1 group" href="#">
+                    <div
+                        class="flex h-10 w-10 items-center justify-center rounded-full text-gray-400 group-hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined" style="font-size: 24px;">favorite</span>
+                    </div>
+                </a>
+                <a class="flex flex-1 flex-col items-center justify-center gap-1 group" href="#">
+                    <div
+                        class="flex h-10 w-10 items-center justify-center rounded-full text-gray-400 group-hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined" style="font-size: 24px;">person</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

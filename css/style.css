@@ -14,7 +14,7 @@ body {
     padding: 0;
     color: var(--text-color);
     text-decoration-color: var(--text-selected-color);
-    background-color: #666;
+    background-color: #505050;
     background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
@@ -25,7 +25,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    height: 10dvh;
+    height: 6dvh;
     justify-content: space-between;
     padding: 0 8px;
     backdrop-filter: blur(4px);
@@ -41,7 +41,7 @@ body {
 .header__img {
     width: 100%;
     max-width: 80px;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
 }
 
@@ -54,7 +54,7 @@ body {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 80%;
+    width: 60%;
     max-width: 300px;
     height: 100vh;
     background-color: #fff;
@@ -134,64 +134,40 @@ body {
 
 /* cards */
 
+.h2_bisuteria,.h2_tejidos {
+    margin: 0;
+}
+
 .card {
-    width: clamp(150px, 60%, 450px);
-    margin: 10px;
-}
-
-.card__img {
-    border-radius: var(--border-radius);
-    width: 100%;
-    height: auto;
-    box-shadow: var(--box-shadow);
-}
-
-/* footer */
-
-.footer {
-    width: 100%;
-    height: 10dvh;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    position: fixed;
-    bottom: 0;
-    font-size: 48px;
+    justify-content: center;
+    /* width: clamp(150px, 60%, 450px); */
+    width: fit-content;
+    height: 200px;
+    margin: 10px;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
 }
 
-.footer__button {
-    background-color: var(--bg-button-dark);
-    color: var(--text-color);
-    font-size: 48px;
-    border: none;
-    padding: 12px;
-    border-radius: var(--border-radius);
+.card:hover {
+    transform: scale(1.1)
 }
 
-.footer__button .material-symbols-outlined {
-    /* Si Material Symbols es más pequeño, puedes ajustarlo aquí. */
-    /* En este caso, hereda 48px del padre, pero a veces necesita un ajuste fino. */
-    /* Si 48px ya funciona bien para 'home', no necesitas esto. */
-    font-size: inherit; /* Asegura que herede el tamaño del botón */
-    line-height: 1; /* Ayuda a la alineación vertical */
-    display: block; /* Asegura que no haya espacio extra debajo */
+
+.card > a.card__a {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
-.footer__button .fab.fa-whatsapp {
-    /* Font Awesome también heredará el font-size del botón (48px) */
-    /* El "fab" y "fa-whatsapp" son las clases de Font Awesome */
-    font-size: inherit; /* Asegura que herede el tamaño del botón */
-    line-height: 1; /* Ayuda a la alineación vertical */
-    display: block; /* Asegura que no haya espacio extra debajo */
+a.card__a > img {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-.footer__button:focus,
-.footer__button:hover {
-    outline: none; /* Elimina el borde de enfoque por defecto */
-    /* Si hay otras transiciones o transformaciones al hover/focus, anúlelas aquí */
-    transform: none;
-    transition: none;
-}
 
 /* section bisuteria */
 
